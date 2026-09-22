@@ -1,0 +1,17 @@
+{
+  "name": "roadmap-design-loop-p5",
+  "version": "1.1.0",
+  "description": "P5 실행 — 로드맵·RACI·KPI 하향 전개",
+  "author": {
+    "name": "rjs-zzz",
+    "url": "https://github.com/rjs-zzz"
+  },
+  "homepage": "https://github.com/rjs-zzz/planning-suite",
+  "license": "MIT",
+  "keywords": [
+    "planning",
+    "korean",
+    "public-sector",
+    "strategy"
+  ]
+}

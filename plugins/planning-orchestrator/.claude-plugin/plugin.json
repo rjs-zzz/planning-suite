@@ -1,0 +1,17 @@
+{
+  "name": "planning-orchestrator",
+  "version": "1.1.0",
+  "description": "관제 — P1~P6 Q-Gate 검증 및 회귀 통제(비생산 스킬)",
+  "author": {
+    "name": "rjs-zzz",
+    "url": "https://github.com/rjs-zzz"
+  },
+  "homepage": "https://github.com/rjs-zzz/planning-suite",
+  "license": "MIT",
+  "keywords": [
+    "planning",
+    "korean",
+    "public-sector",
+    "strategy"
+  ]
+}

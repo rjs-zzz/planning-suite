@@ -51,18 +51,33 @@
 
 ## 설치
 
+### Claude Code — 한 줄 설치 (권장)
+
+```
+/plugin marketplace add rjs-zzz/planning-suite
+/plugin install goal-setting-loop-p2@planning-suite
+```
+
+필요한 Phase만 골라 설치하세요. 7종 전부 설치는 계획서 전체를 작성할 때만
+권장합니다 — 스킬이 많을수록 트리거가 겹칠 소지가 커집니다.
+`planning-orchestrator`는 2개 이상 Phase가 얽힌 작업에서만 필요합니다.
+
+설치 가능한 플러그인: `env-scanning-loop-p1` `goal-setting-loop-p2`
+`strategy-option-loop-p3` `feasibility-review-loop-p4` `roadmap-design-loop-p5`
+`feedback-loop-p6` `planning-orchestrator`
+
 ### Claude.ai (웹/데스크톱/모바일)
-Claude 설정의 Skills 업로드 화면에서 7개 폴더를 각각 zip으로 압축해
-업로드하세요(메뉴 경로는 플랜·시점에 따라 다릅니다 —
+
+`plugins/<스킬명>/skills/<스킬명>/` 폴더를 zip으로 압축해 Skills 업로드
+화면에서 올리면 됩니다(메뉴 경로는 플랜·시점에 따라 다릅니다 —
 [공식 안내](https://support.claude.com/en/articles/12512180) 참조).
 
-**Phase 하나만 필요하면 그 스킬 하나만 설치하세요.** 7종 전부 설치는
-계획서 전체를 작성할 때만 권장합니다 — 스킬이 많을수록 트리거가
-겹칠 소지가 커집니다. `planning-orchestrator`는 2개 이상 Phase가
-얽힌 작업에서만 필요합니다.
+### 설치 전에 결과물부터 보기
 
-### Claude Code
-`~/.claude/skills/`에 7개 폴더를 그대로 넣으면 됩니다.
+[`examples/`](examples/) 에 실제 산출물 예시가 있습니다.
+
+- [P2 목표 체계 산출물 + DATA 블록](examples/01_p2-goal-system.md)
+- [Q-Gate Rollback 판정과 재전파 범위 한정](examples/02_qgate-rollback.md)
 
 ## 사용법
 
@@ -81,34 +96,27 @@ Phase 스킬을 순서대로 불러와 실행합니다.
 
 ```
 planning-suite/
-├── env-scanning-loop-p1/
-│   ├── SKILL.md
-│   ├── agents/            # PEST·3C(market)·VRIO 서브 에이전트, orchestrator 로직
-│   └── templates/
-├── goal-setting-loop-p2/
-│   ├── SKILL.md
-│   ├── references/        # BSC·OKR·Golden Circle 세부 규칙
-│   └── templates/
-├── strategy-option-loop-p3/
-│   ├── SKILL.md
-│   ├── references/        # 포트폴리오 매트릭스·ERRC·간이 스코어링
-│   └── templates/
-├── feasibility-review-loop-p4/
-│   ├── SKILL.md
-│   ├── references/
-│   └── templates/
-├── roadmap-design-loop-p5/
-│   ├── SKILL.md
-│   ├── references/        # 마일스톤·RACI·KPI 설계 규칙
-│   └── templates/
-├── feedback-loop-p6/
-│   ├── SKILL.md
-│   ├── references/        # PDCA·이중고리 학습·컨틴전시 설계
-│   └── templates/
-└── planning-orchestrator/
-    ├── SKILL.md
-    ├── references/         # Q-Gate 체크리스트 (Phase별 스키마 검증 기준)
-    └── templates/           # 관제 대시보드 템플릿
+├── .claude-plugin/
+│   └── marketplace.json          # 마켓플레이스 카탈로그 (7개 플러그인)
+├── plugins/
+│   ├── env-scanning-loop-p1/
+│   │   ├── .claude-plugin/plugin.json
+│   │   └── skills/env-scanning-loop-p1/
+│   │       ├── SKILL.md
+│   │       ├── agents/           # PEST·3C(market)·VRIO 서브 에이전트, orchestrator 로직
+│   │       └── templates/
+│   ├── goal-setting-loop-p2/…    # references/ (BSC·OKR·Golden Circle) + templates/
+│   ├── strategy-option-loop-p3/… # references/ (포트폴리오 매트릭스·ERRC·스코어링)
+│   ├── feasibility-review-loop-p4/…
+│   ├── roadmap-design-loop-p5/…  # references/ (마일스톤·RACI·KPI 설계)
+│   ├── feedback-loop-p6/…        # references/ (PDCA·이중고리 학습·컨틴전시)
+│   └── planning-orchestrator/
+│       └── skills/planning-orchestrator/
+│           ├── references/       # Q-Gate 체크리스트 (Phase별 스키마 검증 기준)
+│           └── templates/        # 관제 대시보드 템플릿
+├── examples/                     # 실제 산출물 예시
+├── COMMON_CONTROLS.md            # 공통 실행 통제 블록 단일 원본
+└── tools/sync_common.py          # 위 블록을 전 스킬에 동기화
 ```
 
 ## 사용 시 참고

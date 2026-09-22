@@ -1,0 +1,17 @@
+{
+  "name": "feedback-loop-p6",
+  "version": "1.1.0",
+  "description": "P6 환류 — 모니터링·컨틴전시·차기 사이클 인계",
+  "author": {
+    "name": "rjs-zzz",
+    "url": "https://github.com/rjs-zzz"
+  },
+  "homepage": "https://github.com/rjs-zzz/planning-suite",
+  "license": "MIT",
+  "keywords": [
+    "planning",
+    "korean",
+    "public-sector",
+    "strategy"
+  ]
+}

@@ -60,19 +60,33 @@ both directly.
 
 ## Install
 
-### Claude.ai (web / desktop / mobile)
-Open the Skills upload screen in Claude settings (the exact menu path
-varies by plan — see the
-[official guide](https://support.claude.com/en/articles/12512180))
-and upload each folder as a zip.
+### Claude Code — one-line install (recommended)
 
-**If you only need one phase, install just that skill.** Installing
-all 7 is recommended only when you're writing a full plan document.
-`planning-orchestrator` is only useful when a task spans two or more
-phases.
+```
+/plugin marketplace add rjs-zzz/planning-suite
+/plugin install goal-setting-loop-p2@planning-suite
+```
 
-### Claude Code
-Drop all 7 folders into `~/.claude/skills/`.
+Install only the phases you need. Installing all seven is recommended only when
+drafting a full plan document — more skills means more trigger overlap.
+`planning-orchestrator` is needed only when two or more phases are involved.
+
+Available plugins: `env-scanning-loop-p1` `goal-setting-loop-p2`
+`strategy-option-loop-p3` `feasibility-review-loop-p4` `roadmap-design-loop-p5`
+`feedback-loop-p6` `planning-orchestrator`
+
+### Claude.ai (web/desktop/mobile)
+
+Zip the folder `plugins/<skill-name>/skills/<skill-name>/` and upload it on the
+Skills screen (the menu path varies by plan and date — see the
+[official guide](https://support.claude.com/en/articles/12512180)).
+
+### See the output before installing
+
+Real output samples live in [`examples/`](examples/).
+
+- [P2 goal system output with its DATA block](examples/01_p2-goal-system.md)
+- [Q-Gate rollback ruling with scoped re-propagation](examples/02_qgate-rollback.md)
 
 ## Usage
 
@@ -93,34 +107,27 @@ judgment call, not a component of a larger planning document.
 
 ```
 planning-suite/
-├── env-scanning-loop-p1/
-│   ├── SKILL.md
-│   ├── agents/            # PEST / 3C (market) / VRIO sub-agents, orchestrator logic
-│   └── templates/
-├── goal-setting-loop-p2/
-│   ├── SKILL.md
-│   ├── references/        # BSC / OKR / Golden Circle detail rules
-│   └── templates/
-├── strategy-option-loop-p3/
-│   ├── SKILL.md
-│   ├── references/        # Portfolio matrices, ERRC, quick scoring
-│   └── templates/
-├── feasibility-review-loop-p4/
-│   ├── SKILL.md
-│   ├── references/
-│   └── templates/
-├── roadmap-design-loop-p5/
-│   ├── SKILL.md
-│   ├── references/        # Milestone / RACI / KPI design rules
-│   └── templates/
-├── feedback-loop-p6/
-│   ├── SKILL.md
-│   ├── references/        # PDCA, double-loop learning, contingency design
-│   └── templates/
-└── planning-orchestrator/
-    ├── SKILL.md
-    ├── references/         # Q-Gate checklists (per-phase schema validation criteria)
-    └── templates/           # Control dashboard template
+├── .claude-plugin/
+│   └── marketplace.json          # Marketplace catalog (7 plugins)
+├── plugins/
+│   ├── env-scanning-loop-p1/
+│   │   ├── .claude-plugin/plugin.json
+│   │   └── skills/env-scanning-loop-p1/
+│   │       ├── SKILL.md
+│   │       ├── agents/           # PEST / 3C (market) / VRIO sub-agents, orchestrator logic
+│   │       └── templates/
+│   ├── goal-setting-loop-p2/…    # references/ (BSC, OKR, Golden Circle) + templates/
+│   ├── strategy-option-loop-p3/… # references/ (portfolio matrices, ERRC, scoring)
+│   ├── feasibility-review-loop-p4/…
+│   ├── roadmap-design-loop-p5/…  # references/ (milestone, RACI, KPI design)
+│   ├── feedback-loop-p6/…        # references/ (PDCA, double-loop learning, contingency)
+│   └── planning-orchestrator/
+│       └── skills/planning-orchestrator/
+│           ├── references/       # Q-Gate checklists (per-phase schema criteria)
+│           └── templates/        # Control dashboard template
+├── examples/                     # Real output samples
+├── COMMON_CONTROLS.md            # Single source for the shared control block
+└── tools/sync_common.py          # Syncs that block into every skill
 ```
 
 ## Notes on use
