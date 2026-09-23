@@ -2,6 +2,16 @@
 
 본 저장소는 [Semantic Versioning](https://semver.org/lang/ko/)을 따른다.
 
+## [1.2.0] — 2026-09-23
+
+### 추가
+- **problem-solver 위임 규칙** (P1~P6 공통) — 사용자 요청 또는 결론을 좌우하는
+  One-way 단일 쟁점에 한해 problem-solver로 전환, `[DATA-PS-OUTPUT]` 승계 후 복귀.
+- **P5 Case 1-b** — problem-solver Go 결정 블록을 WBS 초안·선결 과업·병행 트랙으로 변환.
+- **orchestrator 보조 게이트** — `[DATA-PS-OUTPUT]` 스키마·이월·참조·회귀 신호 검사.
+- **P6 컨틴전시 '사전 확보성' 속성** — 플랜 B 소요 수단의 [확보]/[미확보] 표기,
+  [미확보] 시 예비 재원·대체 공급처·대체 인력 사전 확보 조치 등록 의무.
+
 ## [1.1.0] — 2026-09-22
 
 ### 추가

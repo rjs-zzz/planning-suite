@@ -102,6 +102,9 @@ E.g., "run a SWOT analysis for our organization" triggers
 this isn't the right set — use the separately published
 `problem-solver` skill instead. That one's for a standalone
 judgment call, not a component of a larger planning document.
+During planning work, a Phase skill delegates a single judgment to
+problem-solver (only on user request or for a decision-critical
+one-way issue) and inherits the returned `[DATA-PS-OUTPUT]` block.
 
 ## Structure
 

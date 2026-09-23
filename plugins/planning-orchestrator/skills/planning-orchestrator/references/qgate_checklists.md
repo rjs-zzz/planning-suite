@@ -3,6 +3,20 @@
 검증 범위는 단계 간 정합 4종(스키마/이월/상호 참조/회귀 신호)에 한정.
 개별 스킬 내부 게이트의 재수행 금지.
 
+## 보조 게이트 — [DATA-PS-OUTPUT] (problem-solver 단건 결정)
+
+- **스키마 필수 필드**: meta(decision_id·origin·return_ref) / question /
+  verdict(type·result·panel_ruling) / reversibility / options /
+  control_tags / cost(mode) / assumptions / go_nogo_conditions /
+  exec_outline / handoff
+- **이월**: assumptions → 가정 누계 합산(PS- 접두) / go_nogo_conditions
+  전건이 승계 Phase 입력(P5면 prerequisites_tracks)에 포함
+- **상호 참조**: return_ref가 호출 Phase 블록의 쟁점 키에 실재
+  (예: P3 conflicts, P4 hold_drop)
+- **회귀 신호**: cost.mode 정성인데 금액 존재(수치 창작 위반) /
+  control_tags가 [외부]뿐인데 병행 [자체] 조치 부재 / panel_ruling 누락
+- 판정: Pass 시 해당 쟁점 판정 확정, Hold 시 problem-solver 보완 요구 목록 발급
+
 ## P1 → P2 게이트 (env-scanning-loop-p1 산출물)
 
 - **스키마** [유연 검증 — P1은 정형 블록 미출력 가능]:

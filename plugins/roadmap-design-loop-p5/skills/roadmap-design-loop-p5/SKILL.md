@@ -31,6 +31,10 @@ Phase 4를 통과한 과제 포트폴리오를 입력받아, 현업이 즉시 �
      passed_pool(조정 우선순위), conditional_pool(이행 조건),
      resource_totals(총량 조정·연차 배분 내역), legal_flags(미해결 건),
      conflict_rulings, handoff_to_p5 논점. P2 블록 동봉 시 KR 체계 병행 파싱
+   - **Case 1-b [단건 결정 연계]**: `[DATA-PS-OUTPUT]` (problem-solver Go 결정) →
+     exec_outline을 WBS 초안, go_nogo_conditions를 선결 과업·Go/No-Go 마일스톤,
+     control_tags의 [외부] 조치를 병행 트랙으로 배치. assumptions는 누계 승계.
+     KR 연계가 없으므로 KPI는 verdict·성공 기준 기반 [신규] 라벨로 도출
    - **Case 2 [약식 연계]**: 확정 과제 목록 텍스트만 제공 → 수용하되
      결손 항목(이행 조건, KR 연계, 자원 총량)의 [가정] 전환을 예고
    - **Case 3 [무입력·단건]**: 개별 사업 실행계획 요청 → 최소 필수 정보
@@ -170,6 +174,12 @@ Phase 4를 통과한 과제 포트폴리오를 입력받아, 현업이 즉시 �
 - 한 대화에서 여러 Phase 스킬이 순차 발동할 수 있다. 본 스킬 완료 후 사용자의
   후속 요청이 다른 Phase에 해당하면 즉시 그 스킬로 전환한다 — 별도 세션을
   요구하지 않는다.
+- **problem-solver 위임**: 작업 중 단일 판정(상충 쌍 택일·단건 Go/No-Go·원인 판정)이
+  필요할 때 ①사용자가 요청했거나 ②해당 쟁점이 One-way(비가역) 결정이고 결론을
+  좌우하면 problem-solver(약식 기본)로 전환한다. 반환된 `[DATA-PS-OUTPUT]`의
+  verdict·assumptions·go_nogo_conditions를 해당 쟁점 판정으로 승계하고 복귀한다.
+  그 외 쟁점은 본 스킬 토론으로 판정한다 (위임 남발은 기획 지연 요인).
+  problem-solver 미설치 시 본 스킬 토론으로 판정하고 [가정] 표기.
 - 산출물 말미의 `[DATA-PN-OUTPUT]` 블록이 다음 스킬의 입력이 된다. 같은 대화
   안에서는 사용자에게 블록을 다시 붙여넣게 하지 않고 직접 승계한다.
 
