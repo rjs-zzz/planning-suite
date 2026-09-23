@@ -6,50 +6,50 @@
   },
   "metadata": {
     "description": "한국 공공부문 기획 문서 작성용 6단계 체인 + 관제 스킬",
-    "version": "1.1.0"
+    "version": "1.2.0"
   },
   "plugins": [
     {
       "name": "env-scanning-loop-p1",
       "source": "./plugins/env-scanning-loop-p1",
       "description": "P1 진단 — 환경분석(PEST·3C·VRIO·SWOT) 보고서 산출",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     {
       "name": "goal-setting-loop-p2",
       "source": "./plugins/goal-setting-loop-p2",
       "description": "P2 목표 — 미션·비전·OKR·KPI 목표 체계 수립",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     {
       "name": "strategy-option-loop-p3",
       "source": "./plugins/strategy-option-loop-p3",
       "description": "P3 전략 — 전략과제 풀 발굴·ERRC·우선순위 산정",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     {
       "name": "feasibility-review-loop-p4",
       "source": "./plugins/feasibility-review-loop-p4",
       "description": "P4 검토 — 예산·법률·자원 타당성 스크리닝",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     {
       "name": "roadmap-design-loop-p5",
       "source": "./plugins/roadmap-design-loop-p5",
       "description": "P5 실행 — 로드맵·RACI·KPI 하향 전개",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     {
       "name": "feedback-loop-p6",
       "source": "./plugins/feedback-loop-p6",
       "description": "P6 환류 — 모니터링·컨틴전시·차기 사이클 인계",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     {
       "name": "planning-orchestrator",
       "source": "./plugins/planning-orchestrator",
       "description": "관제 — P1~P6 Q-Gate 검증 및 회귀 통제(비생산 스킬)",
-      "version": "1.1.0"
+      "version": "1.2.0"
     }
   ]
 }
