@@ -74,6 +74,7 @@
 - legal_open: [미해결 건 요지]
 - conflicts_open: [판정 대기 건]
 - inputs_missing: [미확보 자료 묶음 A~G — 없으면 "없음"]
+- scan_log: [Phase별 탐색 주제·검색일·반영한 T번호 — 재탐색 방지용, 없으면 "없음"]
 
 ## gate_log
 - [날짜] P2 게이트: Pass / [날짜] P3 게이트: Hold→보완 재접수 Pass

@@ -41,6 +41,8 @@ what's actually affected).
 3. **What to prepare** — only three things are required: what the plan is, which organization, and the period. Seven bundles of material are recommended and each has a stated fallback when missing: A mission/vision and parent plans, B recent performance figures, C current programs, D budget and resource ceilings, E org chart and fixed dates, F applicable regulations, G existing review bodies. The skills stop to ask only when a required input is missing, never invent figures, and record the input status at the top of each output.
 4. **Organization profile** — paste an `[조직 프로필]` block once; all seven skills read it, so you do not need to edit any SKILL.md.
 
+**Frontier scan** — before the analysis each skill runs one bounded web search for recent theory, research, cases and policy changes relevant to the matter, using generalized queries only (no internal names or amounts). Only sources actually opened are cited, each judged adopt / reference / reject in an appendix. Say "탐색 생략" to skip or "탐색 강화" to widen it.
+
 Mask personal and confidential data before uploading. One model performs both the work and the checks, so have a person re-check important decisions.
 
 ## Why this set
