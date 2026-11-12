@@ -148,6 +148,7 @@
 | 로드맵·RACI | [`dist/roadmap-design-loop-p5.zip`](dist/roadmap-design-loop-p5.zip) |
 | 환류·모니터링 | [`dist/feedback-loop-p6.zip`](dist/feedback-loop-p6.zip) |
 | 계획서 전체 (위 6개와 함께) | [`dist/planning-orchestrator.zip`](dist/planning-orchestrator.zip) |
+| 결과 시각화 (표·도식·모션) | [`dist/visual-presenter.zip`](dist/visual-presenter.zip) |
 
 새 버전이 나오면 같은 zip을 다시 내려받아 올리면 됩니다. 변경 내용은 [CHANGELOG](CHANGELOG.md)에 있습니다.
 
