@@ -34,6 +34,15 @@ regression signal) and, if something's off, determines exactly which
 earlier phase needs to be revisited (with the rollback scoped to
 what's actually affected).
 
+## Quick start
+
+1. **Install** — see [Install](#install). On Claude.ai you upload only the zips you need.
+2. **Ask** in plain language (the skills and their output are Korean-only). If a skill does not trigger, prefix the request with its name.
+3. **What to prepare** — only three things are required: what the plan is, which organization, and the period. Seven bundles of material are recommended and each has a stated fallback when missing: A mission/vision and parent plans, B recent performance figures, C current programs, D budget and resource ceilings, E org chart and fixed dates, F applicable regulations, G existing review bodies. The skills stop to ask only when a required input is missing, never invent figures, and record the input status at the top of each output.
+4. **Organization profile** — paste an `[조직 프로필]` block once; all seven skills read it, so you do not need to edit any SKILL.md.
+
+Mask personal and confidential data before uploading. One model performs both the work and the checks, so have a person re-check important decisions.
+
 ## Why this set
 
 The two most common failure modes in planning work: **output from an
@@ -75,7 +84,11 @@ Available plugins: `env-scanning-loop-p1` `goal-setting-loop-p2`
 `strategy-option-loop-p3` `feasibility-review-loop-p4` `roadmap-design-loop-p5`
 `feedback-loop-p6` `planning-orchestrator`
 
-### Claude.ai (web/desktop/mobile)
+### Claude.ai (web/desktop/mobile) — upload only what you need
+
+Download the zips you need from [`dist/`](dist/) (one per skill, e.g. `dist/goal-setting-loop-p2.zip`) and upload each as-is on the Skills upload screen (do not unzip or re-zip). For a new version, download and re-upload. In Claude Code, third-party marketplaces do not auto-update by default: open `/plugin` → **Marketplaces**, select `planning-suite`, and choose **Update marketplace** or **Enable auto-update**.
+
+Building a zip yourself:
 
 Zip the folder `plugins/<skill-name>/skills/<skill-name>/` and upload it on the
 Skills screen (the menu path varies by plan and date — see the

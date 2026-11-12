@@ -28,6 +28,49 @@
 이월·상호참조·회귀신호 4종 검증)를 거치게 하고, 문제가 있으면 정확히
 어느 단계로 되돌려야 하는지(재전파 범위 한정)까지 판정합니다.
 
+## 빠른 시작
+
+**1. 설치** — 아래 [설치](#설치). Claude.ai는 필요한 스킬의 zip만 올리면 됩니다.
+
+**2. 요청** — 평소 말투로 쓰면 됩니다. 발동하지 않으면 스킬 이름을 붙이세요.
+
+- 계획서 전체: "planning-orchestrator로 우리 기관 3개년 발전계획 만들어줘."
+- 한 단계만: "우리 부서 SWOT 분석해줘" / "내년 OKR 잡아줘" / "이 과제 5개 타당성 검토해줘" / "로드맵 만들어줘"
+
+**3. 준비물** — 꼭 필요한 것은 **무슨 계획인지, 어느 조직인지, 기간** 세 가지입니다.
+아래 자료는 있는 만큼만 주면 됩니다. 없으면 스킬이 가정으로 채우고 표시합니다.
+
+| 자료 | 쓰는 단계 | 없으면 |
+|---|---|---|
+| A 방침 — 미션·비전, 상위 계획 | P1·P2 | 신규 수립으로 가정 |
+| B 실적 — 최근 실적·현황 수치 | P1·P2·P6 | 내부 분석은 추정, 목표 기준선은 "확인 필요" (수치를 지어내지 않음) |
+| C 현행 사업·업무 목록 | P3 | 줄이거나 없앨 사업을 일반 관행으로 가정 |
+| D 재무 — 예산서·견적, 가용 상한 | P3·P4·P5 | 타당성 검토는 금액 없이 등급 판정, 총량 판정 보류 |
+| E 조직도·고정 일정 | P5 | 담당을 역할 명칭으로 표기 (부서명을 지어내지 않음) |
+| F 적용 법령·내부 규정 | P4 | 일반 법령만 식별, "확인 필요" 표기 |
+| G 기존 점검 체계 | P6 | 표준 점검 체계로 설계 |
+
+"준비물 양식 줘"라고 하면 채워 넣을 양식을 보여줍니다. 스킬은 **필수가 빠졌을 때만** 멈춰서 묻고,
+산출물 첫머리에 **입력 현황**과 **바뀌면 결론이 달라지는 입력 3개**를 적습니다.
+→ [통합 모드 입력 점검 예시](examples/03_intake-통합모드.md)
+
+**4. 조직 맞춤** — 아래 블록을 한 번 써서 대화에 붙여넣으세요. 7개 스킬이 모두 같은 블록을 읽습니다.
+(프로젝트 지침처럼 매번 자동으로 들어가는 곳에 저장해 두면 다시 붙여넣지 않아도 됩니다.)
+
+```
+[조직 프로필]
+- 조직 유형: (예: 공공기관 / 지자체 / 민간기업 / 병원 / 학교 / 개인)
+- 상급·감독 기관:
+- 자주 걸리는 법령·규정:
+- 평가·감사 체계: (예: 경영평가, 감사, 이사회 보고)
+- 승인 경로: (예: 부서장 전결 → 경영진 → 이사회)
+- 주요 이해관계자:
+- 예산 주기·고정 일정:
+```
+
+**주의** — 개인정보·대외비는 가리고 올리세요. 산출물은 판단을 돕는 자료입니다.
+한 모델이 분석과 검증을 함께 하므로, 중요한 결정은 사람이 다시 확인해야 합니다.
+
 ## 왜 이 세트인가
 
 기획 업무에서 가장 흔한 실패는 두 가지입니다: **단계 사이에서 앞
@@ -66,11 +109,27 @@
 `strategy-option-loop-p3` `feasibility-review-loop-p4` `roadmap-design-loop-p5`
 `feedback-loop-p6` `planning-orchestrator`
 
-### Claude.ai (웹/데스크톱/모바일)
+설치한 뒤 새 버전을 받으려면 `/plugin` → **Marketplaces** 탭에서 `planning-suite`를 고르고
+**Update marketplace**를 누릅니다. 같은 화면에서 **Enable auto-update**를 켜 두면 이후에는 자동으로 갱신됩니다
+(외부 마켓플레이스는 자동 갱신이 기본으로 꺼져 있습니다).
 
-`plugins/<스킬명>/skills/<스킬명>/` 폴더를 zip으로 압축해 Skills 업로드
-화면에서 올리면 됩니다(메뉴 경로는 플랜·시점에 따라 다릅니다 —
-[공식 안내](https://support.claude.com/en/articles/12512180) 참조).
+### Claude.ai (웹/데스크톱/모바일) — 필요한 파일만 올리기
+
+1. 아래에서 필요한 zip을 내려받습니다.
+2. Skills 업로드 화면에서 그 zip을 그대로 올립니다 — 압축을 풀거나 다시 묶지 않습니다
+   (메뉴 경로는 플랜·시점에 따라 다릅니다 — [공식 안내](https://support.claude.com/en/articles/12512180) 참조).
+
+| 하려는 일 | 올릴 파일 |
+|---|---|
+| 환경분석·SWOT | [`dist/env-scanning-loop-p1.zip`](dist/env-scanning-loop-p1.zip) |
+| 목표·OKR·KPI | [`dist/goal-setting-loop-p2.zip`](dist/goal-setting-loop-p2.zip) |
+| 전략과제 발굴 | [`dist/strategy-option-loop-p3.zip`](dist/strategy-option-loop-p3.zip) |
+| 타당성 검토 | [`dist/feasibility-review-loop-p4.zip`](dist/feasibility-review-loop-p4.zip) |
+| 로드맵·RACI | [`dist/roadmap-design-loop-p5.zip`](dist/roadmap-design-loop-p5.zip) |
+| 환류·모니터링 | [`dist/feedback-loop-p6.zip`](dist/feedback-loop-p6.zip) |
+| 계획서 전체 (위 6개와 함께) | [`dist/planning-orchestrator.zip`](dist/planning-orchestrator.zip) |
+
+새 버전이 나오면 같은 zip을 다시 내려받아 올리면 됩니다. 변경 내용은 [CHANGELOG](CHANGELOG.md)에 있습니다.
 
 ### 설치 전에 결과물부터 보기
 
@@ -78,6 +137,7 @@
 
 - [P2 목표 체계 산출물 + DATA 블록](examples/01_p2-goal-system.md)
 - [Q-Gate Rollback 판정과 재전파 범위 한정](examples/02_qgate-rollback.md)
+- [통합 모드 입력 점검 — 자료를 한 번에 요청](examples/03_intake-통합모드.md)
 
 ## 사용법
 
@@ -115,20 +175,26 @@ planning-suite/
 │   ├── feedback-loop-p6/…        # references/ (PDCA·이중고리 학습·컨틴전시)
 │   └── planning-orchestrator/
 │       └── skills/planning-orchestrator/
-│           ├── references/       # Q-Gate 체크리스트 (Phase별 스키마 검증 기준)
+│           ├── references/       # Q-Gate 체크리스트, 통합 입력 점검(intake_master.md)
 │           └── templates/        # 관제 대시보드 템플릿
-├── examples/                     # 실제 산출물 예시
+├── dist/                         # Claude.ai 업로드용 zip 7개 (tools/build_dist.py로 생성)
+├── examples/                     # 산출물·입력 점검 예시
 ├── COMMON_CONTROLS.md            # 공통 실행 통제 블록 단일 원본
-└── tools/sync_common.py          # 위 블록을 전 스킬에 동기화
+└── tools/                        # sync_common.py · build_dist.py · validate.py
 ```
 
 ## 사용 시 참고
 
-- **조직 맥락 커스터마이징**: 각 스킬 SKILL.md의 "상시 적용 맥락"
-  섹션은 범용으로 작성돼 있습니다. 소속 조직(공공기관, 기업 등)에
-  맞는 법령명·이해관계자 맵·평가 체계로 채워 넣으면 정확도가
-  크게 올라갑니다. 섹션 내 안내문에 커스터마이징 지점을 표시해
-  두었습니다.
+- **조직 맥락 커스터마이징**: 가장 쉬운 방법은 위 `[조직 프로필]` 블록을 대화에 붙여넣는
+  것입니다. 조직 전체가 같은 기준을 쓰게 하려면 각 SKILL.md의 "상시 적용 맥락" 섹션을
+  소속 조직의 법령명·이해관계자 맵·평가 체계로 고쳐 배포하세요.
+- **자주 막히는 지점**
+  - 스킬이 발동하지 않는다 → 요청 앞에 스킬 이름을 붙입니다 (예: "goal-setting-loop-p2로").
+  - 질문 없이 바로 받고 싶다 → "없이 진행" 또는 "약식으로"라고 합니다.
+  - 엉뚱한 단계가 돈다 → 원하는 산출물 이름(환경분석·OKR·로드맵 등)을 요청에 적습니다.
+  - 세션이 끊겼다 → 마지막 `[DATA-P○-OUTPUT]`·`[ORCH-STATE]` 블록을 새 대화에 붙여넣습니다.
+- **저장소를 고친 뒤**: `python tools/sync_common.py` → `python tools/build_dist.py` →
+  `python tools/validate.py` 순으로 실행하면 공통 블록·zip·버전이 맞는지 확인됩니다.
 - **BSC 관점**: P2는 기본값이 공공형 BSC(공공가치 최상위)입니다.
   영리·수익사업 맥락이면 SKILL.md에서 표준형 BSC(재무 최상위)로
   전환하도록 안내되어 있습니다.
