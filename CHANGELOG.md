@@ -2,6 +2,19 @@
 
 본 저장소는 [Semantic Versioning](https://semver.org/lang/ko/)을 따른다.
 
+## [1.7.0] — 2026-11-13
+
+### 변경 (visual-presenter)
+- **미리 정해 둔 스타일을 버렸다.** `references/style_cards.md`(5개 방향)와 용도별 추천표를 삭제했다.
+  그릴 때마다 실제 사이트(The Pudding, 신문 그래픽, Codrops, Awwwards, Motionographer 등)에서 사례를 찾아 방향을 정한다.
+- 추가 `references/benchmark.md` — 실제 사례 탐색 절차, 중심 그림 먼저 정하기, AI 티 점검표, 글꼴·색 기준.
+- 워크플로우 개편: 접수 → **실제 사례 탐색(매번)** → 방향 고르기(유일한 질문) → **중심 그림 먼저** → 제작 → 점검(렌더 확인·AI 티 점검표).
+- `motion_catalog.md`는 기법 이름(검색어)과 구현 등급 확인용으로만 쓴다. 「내용별 추천」 표를 삭제했다.
+- `motion.md` 기법 고르기: 실제 사례의 움직임에서 출발, 뜻 없는 움직임 금지, 한 번에 하나만 움직이기.
+- `pattern_cards.md`는 형식을 강제하지 않는 정확성 규칙으로 성격을 바꿨다.
+- 외부 글꼴은 Google Fonts만 허용하고 기기 글꼴을 대체로 지정한다.
+- 시험 사례 VP-1·3·4 갱신, VP-5 추가.
+
 ## [1.6.0] — 2026-11-12
 
 ### 추가
