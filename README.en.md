@@ -43,7 +43,7 @@ what's actually affected).
 
 **Frontier scan** — before the analysis each skill runs one bounded web search for recent theory, research, cases and policy changes relevant to the matter, using generalized queries only (no internal names or amounts). Only sources actually opened are cited, each judged adopt / reference / reject in an appendix. Say "탐색 생략" to skip or "탐색 강화" to widen it.
 
-Mask personal and confidential data before uploading. One model performs both the work and the checks, so have a person re-check important decisions.
+Mask personal and confidential data before uploading. One model performs both the work and the checks, so run important plans through `red-team` (problem-solver plugin) for an independent review and have a person re-check them.
 
 ## Why this set
 
@@ -120,6 +120,14 @@ judgment call, not a component of a larger planning document.
 During planning work, a Phase skill delegates a single judgment to
 problem-solver (only on user request or for a decision-critical
 one-way issue) and inherits the returned `[DATA-PS-OUTPUT]` block.
+
+**When you need an independent review of a finished plan**: use the
+`red-team` skill bundled in the `problem-solver` plugin. Q-Gate is a
+consistency check run by the same model in the same conversation, not an
+independent review. Paste the finished plan into a **new conversation
+outside the project**, pick a **different model**, and say "red-team으로";
+the five-dissenter panel attacks the document as written and returns an
+`[RT-RETURN]` block (it does not rewrite the document).
 
 ## Structure
 
