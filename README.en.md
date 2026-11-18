@@ -96,6 +96,23 @@ Zip the folder `plugins/<skill-name>/skills/<skill-name>/` and upload it on the
 Skills screen (the menu path varies by plan and date — see the
 [official guide](https://support.claude.com/en/articles/12512180)).
 
+### ChatGPT · Gemini — same zip files
+
+ChatGPT and Gemini read the same SKILL.md format (the Agent Skills standard). Use the zips in the table above as they are.
+
+| AI | How |
+|---|---|
+| ChatGPT | Skills → Create → Upload from your computer, then upload the zips you need |
+| Gemini (web gemini.google.com · Mac app) | Settings → Skills → Upload. If the zip is refused, unzip it and upload the skill folder |
+| Gemini CLI | `gemini skills install https://github.com/rjs-zzz/planning-suite.git --path plugins/<name>/skills/<name>` (e.g. `<name>` = `goal-setting-loop-p2`) |
+
+- To invoke: `@skill-name` in ChatGPT, `/skill-name` in Gemini. Both may also pick the skill on their own when the request matches.
+- In the ChatGPT desktop app you can also add `rjs-zzz/planning-suite` under Plugins → Add → Add a marketplace
+  (OpenAI documents compatibility with Claude-format marketplaces). Availability on web and mobile varies by plan.
+- When moving a document to another company's AI, generalize organization and personal names and leave out confidential originals.
+- Menu names and support change with each vendor's updates (as of 2026-11).
+- Hand-offs between phases work in any AI: paste the `[DATA-PN-OUTPUT]` block into the next phase's conversation.
+
 ### See the output before installing
 
 Real output samples live in [`examples/`](examples/).

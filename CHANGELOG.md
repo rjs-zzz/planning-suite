@@ -2,6 +2,15 @@
 
 본 저장소는 [Semantic Versioning](https://semver.org/lang/ko/)을 따른다.
 
+## [1.7.1] — 2026-11-18
+
+### 변경 (다른 AI 호환)
+- env-scanning-loop-p1의 실행 환경 절에서 특정 제품 이름(Claude.ai·Claude Code·Cowork·Task)을 능력 기준 문장
+  ("병렬 실행 도구가 있는 환경")으로 바꿨다. 절차는 같다 — 기본은 순차 역할 전환, 정밀 모드는 병렬 실행 도구가 있는 환경에서만.
+  같은 SKILL.md를 Claude·ChatGPT·Gemini가 함께 읽기 때문이다.
+- `tools/validate.py`: name 형식 점검(소문자·숫자·하이픈, 64자 이하)과 스킬 본문의 특정 AI 환경 이름 점검을 추가했다.
+- README: ChatGPT·Gemini 설치 방법을 추가했다.
+
 ## [1.7.0] — 2026-11-13
 
 ### 변경 (visual-presenter)
