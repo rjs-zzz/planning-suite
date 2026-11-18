@@ -71,6 +71,8 @@ both directly.
 
 ## Install
 
+> **One page for Claude · ChatGPT · Gemini** (Korean, shared with problem-solver): [INSTALL.md](https://github.com/rjs-zzz/problem-solver/blob/main/INSTALL.md)
+
 ### Claude Code — one-line install (recommended)
 
 ```

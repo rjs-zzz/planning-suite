@@ -114,6 +114,8 @@
 
 ## 설치
 
+> **Claude · ChatGPT · Gemini 통합 설치 안내** (problem-solver와 공용) — [INSTALL.md](https://github.com/rjs-zzz/problem-solver/blob/main/INSTALL.md)
+
 ### Claude Code — 한 줄 설치 (권장)
 
 ```
