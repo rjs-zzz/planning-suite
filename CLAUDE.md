@@ -12,7 +12,8 @@
 | `plugins/*/skills/*` | `dist/*.zip` (웹 업로드용) | `python tools/build_dist.py` |
 
 - P1 분석 트랙 에이전트: `plugins/env-scanning-loop-p1/agents/*.md`는 스킬 안 `agents/*.md` 역할 파일을 읽어 따른다 — 역할 내용은 스킬 쪽만 고친다.
-- `planning-orchestrator`의 plugin.json `dependencies`가 P1~P6를 함께 설치한다. 플러그인을 추가·개명하면 이 목록도 고친다.
+- `plugins/planning-suite-all`은 스킬 없는 **묶음 플러그인**이다. plugin.json `dependencies`가 8종을 함께 설치한다. 플러그인을 추가·개명하면 이 목록도 고친다.
+  개별 플러그인(특히 orchestrator)에는 `dependencies`를 넣지 않는다 — 넣으면 사용자가 Phase 하나를 끌 수 없게 된다.
 
 ## 고친 뒤 반드시
 

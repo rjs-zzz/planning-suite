@@ -7,4 +7,4 @@ timeout_seconds: 1500
 allowed_tools: [Read, Glob, Grep, Skill, WebSearch, WebFetch]
 ---
 
-goal-setting-loop-p2로 가상의 '한국지역문화진흥원' 2027~2029년 목표 체계를 만들어줘. 미션은 "지역 문화 격차 해소"야. 실적 자료는 없어.
+goal-setting-loop-p2로 약식으로, 가상의 '한국지역문화진흥원' 2027~2029년 목표 체계를 만들어줘. 미션은 "지역 문화 격차 해소"야. 실적 자료는 없으니 없이 진행해.

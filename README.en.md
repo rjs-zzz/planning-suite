@@ -80,8 +80,9 @@ both directly.
 /plugin install goal-setting-loop-p2@planning-suite
 ```
 
-Install only the phases you need. For a full plan document, install the control skill alone —
-P1–P6 come with it as dependencies: `/plugin install planning-orchestrator@planning-suite`.
+Install only the phases you need. For a full plan document, install the bundle, which pulls in all eight
+(P1–P6, orchestrator, visual-presenter): `/plugin install planning-suite-all@planning-suite`. While the bundle is
+installed, single phases cannot be disabled; uninstall the bundle first — the eight plugins stay installed.
 
 Available plugins: `env-scanning-loop-p1` `goal-setting-loop-p2`
 `strategy-option-loop-p3` `feasibility-review-loop-p4` `roadmap-design-loop-p5`

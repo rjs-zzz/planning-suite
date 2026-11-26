@@ -1,6 +1,6 @@
 {
   "name": "planning-orchestrator",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "관제 — P1~P6 Q-Gate 검증 및 회귀 통제(비생산 스킬)",
   "author": {
     "name": "rjs-zzz",
@@ -13,13 +13,5 @@
     "korean",
     "public-sector",
     "strategy"
-  ],
-  "dependencies": [
-    "env-scanning-loop-p1",
-    "goal-setting-loop-p2",
-    "strategy-option-loop-p3",
-    "feasibility-review-loop-p4",
-    "roadmap-design-loop-p5",
-    "feedback-loop-p6"
   ]
 }

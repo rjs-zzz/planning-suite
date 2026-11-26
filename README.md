@@ -123,16 +123,18 @@
 /plugin install goal-setting-loop-p2@planning-suite
 ```
 
-필요한 Phase만 골라 설치하세요. 계획서 전체를 쓸 때는 관제 스킬 하나만 설치하면
-**P1~P6가 의존성으로 함께 설치**됩니다.
+필요한 Phase만 골라 설치하세요. 계획서 전체를 쓸 때는 **묶음 플러그인** 하나로 8종(P1~P6·관제·표현)을 한 번에 설치합니다.
 
 ```
-/plugin install planning-orchestrator@planning-suite
+/plugin install planning-suite-all@planning-suite
 ```
+
+묶음이 설치돼 있는 동안에는 개별 Phase를 끌 수 없습니다. 일부만 쓰려면 묶음을 제거하세요 —
+설치된 8종은 그대로 남고, 그 뒤로는 하나씩 끄고 켤 수 있습니다.
 
 설치 가능한 플러그인: `env-scanning-loop-p1` `goal-setting-loop-p2`
 `strategy-option-loop-p3` `feasibility-review-loop-p4` `roadmap-design-loop-p5`
-`feedback-loop-p6` `planning-orchestrator` `visual-presenter`
+`feedback-loop-p6` `planning-orchestrator` `visual-presenter` `planning-suite-all`(묶음)
 
 설치한 뒤 새 버전을 받으려면 `/plugin` → **Marketplaces** 탭에서 `planning-suite`를 고르고
 **Update marketplace**를 누릅니다. 같은 화면에서 **Enable auto-update**를 켜 두면 이후에는 자동으로 갱신됩니다
