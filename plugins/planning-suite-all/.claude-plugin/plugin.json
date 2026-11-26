@@ -1,6 +1,6 @@
 {
   "name": "planning-suite-all",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "description": "전체 묶음 — 설치하면 P1~P6·관제·표현 8종이 함께 설치된다 (스킬 없음). 일부를 끄려면 이 묶음을 먼저 제거한다 — 나머지는 그대로 남는다",
   "author": {
     "name": "rjs-zzz",
