@@ -123,17 +123,34 @@
 /plugin install goal-setting-loop-p2@planning-suite
 ```
 
-필요한 Phase만 골라 설치하세요. 7종 전부 설치는 계획서 전체를 작성할 때만
-권장합니다 — 스킬이 많을수록 트리거가 겹칠 소지가 커집니다.
-`planning-orchestrator`는 2개 이상 Phase가 얽힌 작업에서만 필요합니다.
+필요한 Phase만 골라 설치하세요. 계획서 전체를 쓸 때는 관제 스킬 하나만 설치하면
+**P1~P6가 의존성으로 함께 설치**됩니다.
+
+```
+/plugin install planning-orchestrator@planning-suite
+```
 
 설치 가능한 플러그인: `env-scanning-loop-p1` `goal-setting-loop-p2`
 `strategy-option-loop-p3` `feasibility-review-loop-p4` `roadmap-design-loop-p5`
-`feedback-loop-p6` `planning-orchestrator`
+`feedback-loop-p6` `planning-orchestrator` `visual-presenter`
 
 설치한 뒤 새 버전을 받으려면 `/plugin` → **Marketplaces** 탭에서 `planning-suite`를 고르고
 **Update marketplace**를 누릅니다. 같은 화면에서 **Enable auto-update**를 켜 두면 이후에는 자동으로 갱신됩니다
 (외부 마켓플레이스는 자동 갱신이 기본으로 꺼져 있습니다).
+
+#### Claude Code에서 달라지는 점
+
+| 항목 | 웹·데스크톱 채팅 | Claude Code |
+|---|---|---|
+| 부르기 | "goal-setting-loop-p2로 …" | 같은 문장, 또는 `/goal-setting-loop-p2:goal-setting-loop-p2 …` |
+| 단계 잇기 | `[DATA-PN-OUTPUT]` 블록 복사·붙여넣기 | 붙여넣기 없음 — 산출물이 `outputs/`에 저장되고 다음 단계가 찾아 읽음 |
+| 세션이 끊겼을 때 | 마지막 `[ORCH-STATE]` 붙여넣기 | `outputs/ORCH-STATE_<사안>.md`에서 자동 복원 |
+| P1 정밀 모드 | 불가 (정식으로 대체) | PEST·3C·VRIO 하위 에이전트(`pest-analyst`·`market-analyst`·`vrio-analyst`) 병렬 독립 실행 + 델타 분석 |
+| 시각화 | 응답 안 미리보기 | `outputs/…v1.html` 단일 파일로 저장 |
+
+- 작업 폴더 하나를 사안별로 쓰면 산출물·상태 원장이 한곳에 쌓입니다. 기존 파일은 덮어쓰지 않고 `_v2`로 올립니다
+  (상태 원장 `ORCH-STATE_<사안>.md`만 예외로 갱신).
+- 독립 검증은 problem-solver 저장소의 `/problem-solver:red-team-run outputs/계획서.md`로 돌립니다.
 
 ### Claude.ai (웹/데스크톱/모바일) — 필요한 파일만 올리기
 
@@ -205,10 +222,11 @@ Q-Gate는 같은 대화·같은 모델이 하는 단계 간 정합 점검이라 
 ```
 planning-suite/
 ├── .claude-plugin/
-│   └── marketplace.json          # 마켓플레이스 카탈로그 (7개 플러그인)
+│   └── marketplace.json          # 마켓플레이스 카탈로그 (8개 플러그인)
 ├── plugins/
 │   ├── env-scanning-loop-p1/
 │   │   ├── .claude-plugin/plugin.json
+│   │   ├── agents/               # Claude Code 전용 — PEST·3C·VRIO 병렬 분석 하위 에이전트
 │   │   └── skills/env-scanning-loop-p1/
 │   │       ├── SKILL.md
 │   │       ├── agents/           # PEST·3C(market)·VRIO 서브 에이전트, orchestrator 로직
@@ -222,11 +240,12 @@ planning-suite/
 │       └── skills/planning-orchestrator/
 │           ├── references/       # Q-Gate 체크리스트, 통합 입력 점검(intake_master.md)
 │           └── templates/        # 관제 대시보드 템플릿
-├── dist/                         # Claude.ai 업로드용 zip 7개 (tools/build_dist.py로 생성)
+├── dist/                         # Claude.ai 업로드용 zip 8개 (tools/build_dist.py로 생성)
 ├── examples/                     # 산출물·입력 점검 예시
 ├── COMMON_CONTROLS.md            # 공통 실행 통제 블록 단일 원본
 ├── shared/frontier_scan.md        # 최신 동향 탐색 공통 절차 원본 (각 스킬 references/로 복사)
-└── tools/                        # sync_common.py · build_dist.py · validate.py
+├── CLAUDE.md                     # 저장소 작업 규칙 (Claude Code로 고칠 때 자동으로 읽힘)
+└── tools/                        # sync_common.py · build_dist.py · build_evals.py · validate.py
 ```
 
 ## 사용 시 참고
@@ -238,9 +257,11 @@ planning-suite/
   - 스킬이 발동하지 않는다 → 요청 앞에 스킬 이름을 붙입니다 (예: "goal-setting-loop-p2로").
   - 질문 없이 바로 받고 싶다 → "없이 진행" 또는 "약식으로"라고 합니다.
   - 엉뚱한 단계가 돈다 → 원하는 산출물 이름(환경분석·OKR·로드맵 등)을 요청에 적습니다.
-  - 세션이 끊겼다 → 마지막 `[DATA-P○-OUTPUT]`·`[ORCH-STATE]` 블록을 새 대화에 붙여넣습니다.
+  - 세션이 끊겼다 → 마지막 `[DATA-P○-OUTPUT]`·`[ORCH-STATE]` 블록을 새 대화에 붙여넣습니다
+    (Claude Code는 `outputs/`에서 스스로 이어받습니다).
 - **저장소를 고친 뒤**: `python tools/sync_common.py` → `python tools/build_dist.py` →
-  `python tools/validate.py` 순으로 실행하면 공통 블록·zip·버전이 맞는지 확인됩니다.
+  `python tools/build_evals.py` → `python tools/validate.py` 순으로 실행하면 공통 블록·zip·시험 사례·버전·
+  매니페스트가 맞는지 확인됩니다. GitHub Actions가 push·PR마다 같은 점검을 돌립니다.
 - **BSC 관점**: P2는 기본값이 공공형 BSC(공공가치 최상위)입니다.
   영리·수익사업 맥락이면 SKILL.md에서 표준형 BSC(재무 최상위)로
   전환하도록 안내되어 있습니다.
@@ -249,12 +270,9 @@ planning-suite/
   양식(두괄식·개조식·【 】 제목 체계)을 따릅니다. 영어 환경에서
   쓰려면 각 SKILL.md의 "출력 표준" 섹션과 references·templates를
   직접 번역해야 합니다.
-- **서브에이전트 스폰 금지**: 각 스킬의 「에이전트」는 역할 전환
-  (내부 추론)을 의미하며, Claude.ai 채팅에서 실제 서브에이전트를
-  스폰하지 않습니다. Claude Code 등 멀티에이전트가 가능한 환경에서도
-  검증·재확인 목적의 위임은 금지되어 있습니다. 단, P1 정밀 모드의
-  이중 실행은 같은 결과를 다시 검사하는 것이 아니라 독립 2트랙 산출
-  후 델타를 비교하는 절차이므로 이 금지 대상에 해당하지 않습니다.
+- **하위 에이전트 사용 범위**: 각 스킬의 「에이전트」는 역할 전환(내부 추론)입니다. 실제 하위 에이전트는
+  두 경우에만 씁니다 — P1의 병렬 분석 트랙(정밀 모드: 독립 2트랙 산출 후 델타 비교)과 problem-solver의
+  레드팀 독립 실행. 같은 모델로 결과를 다시 확인하는 검증 목적 위임은 금지입니다.
 
 ## 라이선스
 

@@ -1,5 +1,17 @@
 {
   "name": "visual-presenter",
+  "version": "1.8.0",
   "description": "표현 — 분석·기획 결과를 표·도식·차트·한 장 요약·모션으로 시각화",
-  "version": "1.7.1"
+  "author": {
+    "name": "rjs-zzz",
+    "url": "https://github.com/rjs-zzz"
+  },
+  "homepage": "https://github.com/rjs-zzz/planning-suite",
+  "license": "MIT",
+  "keywords": [
+    "visualization",
+    "korean",
+    "public-sector",
+    "report"
+  ]
 }

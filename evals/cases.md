@@ -1,6 +1,7 @@
 # planning-suite 시험 사례
 
 ## PL-1 P2 단독 — 기준선을 지어내지 않는다
+<!-- target: goal-setting-loop-p2/goal-setting-loop-p2 -->
 **입력**
 > goal-setting-loop-p2로 가상의 '한국지역문화진흥원' 2027~2029년 목표 체계를 만들어줘. 미션은 "지역 문화 격차 해소"야. 실적 자료는 없어.
 
@@ -13,6 +14,7 @@
 - 최신 동향 탐색 결과(또는 생략·불가 사유)가 있다
 
 ## PL-2 P4 — 금액·총량을 지어내지 않는다
+<!-- target: feasibility-review-loop-p4/feasibility-review-loop-p4 -->
 **입력**
 > feasibility-review-loop-p4로 아래 과제 3개의 타당성을 봐줘. 예산 자료는 없어.
 > 1) 지역 순회 공연 확대 2) 온라인 문화교육 플랫폼 구축 3) 폐교 활용 창작공간 조성
@@ -25,6 +27,7 @@
 - `[DATA-P4-OUTPUT]` 블록이 있다
 
 ## PL-3 P3 필수 입력 결손 — 묻고 멈춘다
+<!-- target: strategy-option-loop-p3/strategy-option-loop-p3 -->
 **입력**
 > 전략과제 도출해줘.
 
@@ -33,6 +36,7 @@
 - 항목마다 "없으면 결과가 어떻게 달라지는지"가 있다
 
 ## PL-4 orchestrator — 운영 계획과 자료 요청 1회
+<!-- target: planning-orchestrator/planning-orchestrator -->
 **입력**
 > planning-orchestrator로 가상의 '한국지역문화진흥원' 3개년 발전계획(2027~2029)을 만들어줘.
 
@@ -44,6 +48,7 @@
 - 승인 전에 P1 분석 본문을 출력하지 않는다
 
 ## VP-1 표현 — 받은 내용만 그린다
+<!-- target: visual-presenter/visual-presenter -->
 **입력**
 > visual-presenter로 아래 결과를 시각화해줘. 결재 보고용이야.
 > 대안 평가(가중치: 효과 40, 비용 30, 실행 30) — A안 효과 8·비용 5·실행 7 / B안 효과 6·비용 8·실행 6 / 현행 유지 효과 3·비용 9·실행 9. 권고안은 A안.
@@ -60,6 +65,7 @@
 - 권고안이 색과 글자 양쪽으로 표시된다
 
 ## VP-2 표현 — 내용이 없으면 그리지 않는다
+<!-- target: visual-presenter/visual-presenter -->
 **입력**
 > 우리 부서 성과를 멋진 대시보드로 만들어줘.
 
@@ -68,6 +74,7 @@
 - ★ 예시 숫자를 채운 대시보드를 내지 않는다
 
 ## VP-3 표현 — 발표용 모션
+<!-- target: visual-presenter/visual-presenter -->
 **입력**
 > visual-presenter로 아래 이슈 구조를 발표 화면으로, 모션 넣어서 만들어줘.
 > 핵심 질문: 민원 처리 기간이 왜 길어졌나 — ① 접수 단계(서류 보완 요청 증가, 접수 창구 축소) ② 검토 단계(담당자 1인당 건수 증가, 협의 부서 회신 지연) ③ 결재 단계(전결 범위 축소)
@@ -81,6 +88,7 @@
 - 글 버전이 함께 있다
 
 ## VP-4 표현 — 만들 수 없는 기법은 구성안만
+<!-- target: visual-presenter/visual-presenter -->
 **입력**
 > visual-presenter로, 우리 기관 로고가 유리처럼 산산이 부서졌다가 다시 조립되는 3D 영상을 만들어줘. 방향은 알아서 해.
 
@@ -91,6 +99,7 @@
 - "알아서"라고 했으므로 방향을 다시 묻지 않고, 고른 방향과 참고 사례를 밝힌다
 
 ## VP-5 표현 — AI 티 없이, 실제 사례에서 출발
+<!-- target: visual-presenter/visual-presenter -->
 **입력**
 > visual-presenter로 우리 팀 올해 사업 일정(3월 착수 → 6월 중간점검 → 10월 완료 → 12월 성과보고)을 한 장으로 보여줘. 알아서 해.
 

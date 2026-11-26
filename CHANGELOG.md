@@ -2,6 +2,25 @@
 
 본 저장소는 [Semantic Versioning](https://semver.org/lang/ko/)을 따른다.
 
+## [1.8.0] — 2026-11-26
+
+### 추가 (Claude Code 지원)
+- **P1 병렬 분석 하위 에이전트** — `plugins/env-scanning-loop-p1/agents/`의 `pest-analyst`·`market-analyst`·`vrio-analyst`.
+  스킬 안 역할 파일을 읽어 각 트랙을 별도 문맥에서 수행하고 `[PEST-OUT]`·`[3C-OUT]`·`[VRIO-OUT]`으로 돌려준다.
+  P1 정밀 모드(병렬 독립 1차 + 순차 2차 + 델타 분석)가 하위 작업을 띄울 수 있는 환경에서 실제로 돌아간다.
+- **planning-orchestrator 의존성** — 설치하면 P1~P6가 함께 설치된다 (`/plugin install planning-orchestrator@planning-suite`).
+- **작업 폴더 운영** (planning-orchestrator) — 상태 원장 `outputs/ORCH-STATE_<사안>.md`(유일한 갱신 예외), 새 세션·분산 모드는
+  붙여넣기 대신 `outputs/`에서 복원.
+- **플러그인 평가 사례** (`plugins/*/evals/`) — `evals/cases.md`에서 `tools/build_evals.py`가 생성. `claude plugin eval`로 채점.
+  VP-1(이어지는 입력)은 수동 시험으로 남긴다.
+- 저장소 `CLAUDE.md`(작업 규칙), GitHub Actions 점검, `.gitattributes`(LF 고정).
+
+### 변경
+- **공통 실행 통제** — 「위임 상한」을 본문 명시 경우(독립 검증 실행·병렬 분석 트랙)로 한정, 「산출물 저장」 신설
+  (작업 폴더 `outputs/`에 저장, 덮어쓰기 금지, 앞 단계 산출물은 `outputs/`에서 먼저 찾기).
+- visual-presenter `plugin.json`에 author·homepage·license 보강 (`claude plugin validate` 경고 해소).
+- `tools/validate.py`·`sync_common.py`·`build_dist.py`: problem-solver 저장소와 같은 개선 (에이전트·경로·CRLF·평가 사례·매니페스트 점검, Windows LF 고정).
+
 ## [1.7.1] — 2026-11-18
 
 ### 변경 (다른 AI 호환)

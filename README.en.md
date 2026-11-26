@@ -80,13 +80,16 @@ both directly.
 /plugin install goal-setting-loop-p2@planning-suite
 ```
 
-Install only the phases you need. Installing all seven is recommended only when
-drafting a full plan document — more skills means more trigger overlap.
-`planning-orchestrator` is needed only when two or more phases are involved.
+Install only the phases you need. For a full plan document, install the control skill alone —
+P1–P6 come with it as dependencies: `/plugin install planning-orchestrator@planning-suite`.
 
 Available plugins: `env-scanning-loop-p1` `goal-setting-loop-p2`
 `strategy-option-loop-p3` `feasibility-review-loop-p4` `roadmap-design-loop-p5`
-`feedback-loop-p6` `planning-orchestrator`
+`feedback-loop-p6` `planning-orchestrator` `visual-presenter`
+
+What changes in Claude Code: outputs are saved to `outputs/YYYYMMDD_<topic>_<type>_v1.md` in the working folder
+and the next phase reads them from there (no copy-paste of `[DATA-PN-OUTPUT]`); the orchestrator restores state
+from `outputs/ORCH-STATE_<topic>.md`; P1's precision mode runs the PEST·3C·VRIO tracks as parallel sub-agents.
 
 ### Claude.ai (web/desktop/mobile) — upload only what you need
 
@@ -194,11 +197,9 @@ planning-suite/
   To use these in English, you'd need to translate each SKILL.md's
   "출력 표준" (Output Standard) section plus the references and
   templates yourself.
-- **No sub-agent spawning**: "agents" in each skill refer to role
-  switching (internal reasoning), not actual sub-agents spawned in
-  Claude.ai chat. Even in multi-agent-capable environments like
-  Claude Code, delegation for verification/re-confirmation purposes
-  is explicitly disallowed.
+- **Sub-agent scope**: "agents" in each skill mean role switching (internal reasoning). Real sub-agents are used
+  only for P1's parallel analysis tracks (precision mode) and problem-solver's independent red-team run.
+  Delegating to the same model just to re-check a result is disallowed.
 
 ## License
 
